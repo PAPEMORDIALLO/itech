@@ -2,21 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produit;
-use App\Http\Requests\StoreProduitRequest;
-use App\Http\Requests\UpdateProduitRequest;
+use Illuminate\Http\Request;
 
-class ProduitController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-
-        $produits = Produit::with('categories')
-            ->paginate(15);
-        return view('admin.produit.index', compact('produits'));
+        //
     }
 
     /**
@@ -30,7 +25,7 @@ class ProduitController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProduitRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -38,7 +33,7 @@ class ProduitController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Produit $produit)
+    public function show(string $id)
     {
         //
     }
@@ -46,7 +41,7 @@ class ProduitController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Produit $produit)
+    public function edit(string $id)
     {
         //
     }
@@ -54,7 +49,7 @@ class ProduitController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProduitRequest $request, Produit $produit)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -62,7 +57,7 @@ class ProduitController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Produit $produit)
+    public function destroy(string $id)
     {
         //
     }
