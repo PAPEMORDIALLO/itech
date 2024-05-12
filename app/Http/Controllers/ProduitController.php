@@ -42,7 +42,7 @@ class ProduitController extends Controller
     public function store(StoreProduitRequest $request): RedirectResponse
     {
         try {
-            Produit::create($request->validated());
+            Produit::create((new Produit())->saveImage($request));
             return redirect()->route('admin.produits.index')
                 ->with('success', 'Produit crée avec succès');
         } catch (Exception $e) {

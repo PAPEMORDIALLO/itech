@@ -31,6 +31,7 @@ class User extends Authenticatable
         'adresse',
         'telephone',
         'cni',
+        'status',
         'pays'
     ];
 
@@ -70,6 +71,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Preference::class);
     }
+
 
 
 }
