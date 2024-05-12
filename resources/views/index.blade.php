@@ -93,9 +93,9 @@
                     <div class="row">
                         <div class="col-md-6 order-md-last align-items-stretch d-flex">
                             <div class="category-wrap-2 ftco-animate img align-self-stretch d-flex"
-                                 style="background-image: url({{ asset('/storage/'.$categories[0]->image) }});">
+                                 style="background-image: url({{ asset('images/category.jpg') }});">
                                 <div class="text text-center">
-                                    <h2>{{ $categories[0]->libelle }}</h2>
+                                    <h2>Vegetables</h2>
                                     <p>Protect the health of every home</p>
                                     <p><a href="#" class="btn btn-primary">Shop now</a></p>
                                 </div>

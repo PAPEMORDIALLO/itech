@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\IndexClientController;
+use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProduitCommandeController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\StockController;
@@ -22,9 +23,9 @@ Route::get('/', [IndexClientController::class, 'index'])
     ->name('index');
 
 
-Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
-    //
-});
+Route::get('/panier/ajoute/{produit}' ,[PanierController::class, 'ajoute'])
+    ->name('panier.ajoute')->middleware('auth');
+
 
 
 Route::resources([

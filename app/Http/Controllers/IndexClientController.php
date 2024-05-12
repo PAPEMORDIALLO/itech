@@ -16,7 +16,11 @@ class IndexClientController extends Controller
     {
         $produits = Produit::with('categorie')->get();
         $categories = Categorie::get()->take(4)->toArray();
-        $panier_count = Panier::where('user_id', auth()->user()->id)->count();
+        if( Auth()->user() != null ) {
+            $panier_count = Panier::where('user_id', auth()->user()->id)->count();
+        } else {
+            $panier_count = 0;
+        }
         return view('index', compact('produits', 'categories', 'panier_count'));
     }
 
