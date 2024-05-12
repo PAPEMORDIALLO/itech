@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Models\Produit;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -16,11 +17,11 @@ class SendClientnotification extends Notification
      * Create a new notification instance.
      */
     public Produit $produit;
-    public User $acheteur;
-    public function __construct($produit, $acheteur)
+
+    public function __construct($produit)
     {
         $this->produit = $produit;
-        $this->acheteur = $acheteur;
+
     }
 
     /**
@@ -39,7 +40,7 @@ class SendClientnotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('Bonjour Cher Client. votre produit '.$this->produit->titre.' a ete vendue a.'.$this->acheteur->prenom.' '. $this->acheteur->nom.' son numero est.'.$this->acheteur->telephone)
+                    ->line('Bonjour Cher Client. votre produit '.$this->produit->titre.' a ete vendue a. ')
                     ->line(' Merci pour votre confiance.')
                     ->action('Notification Action', url('/'))
                     ->line('la lutte contre le gaspillage est notre priorite!');

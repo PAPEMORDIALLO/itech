@@ -6,6 +6,7 @@ use App\Models\Commande;
 use App\Http\Requests\StoreCommandeRequest;
 use App\Http\Requests\UpdateCommandeRequest;
 use App\Models\Panier;
+use App\Models\User;
 
 class CommandeController extends Controller
 {
@@ -52,11 +53,11 @@ class CommandeController extends Controller
             'user_id'=>$user,
             'montant'=>$input['montant']
         ]);
-        $acheteur=$commande->user();
+
         $paniers=Panier::with('produit')->where('user_id',auth()->user()->id)->get();
         foreach ($paniers as $panier) {
-            $user=$panier->produit->user();
-            $user->notify(new \App\Notifications\SendClientnotification($panier->produit,$acheteur));
+             $user=User::find($panier->produit->user_id);
+            $user->notify(new \App\Notifications\SendClientnotification($panier->produit));
             $panier->delete();
 
         }
