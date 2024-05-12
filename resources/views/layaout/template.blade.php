@@ -13,7 +13,8 @@ if( Auth()->user() != null ) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
+          rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
 
@@ -62,7 +63,7 @@ if( Auth()->user() != null ) {
 </div>
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">Vegefoods</a>
+        <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', "I-Tech") }}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
@@ -79,11 +80,17 @@ if( Auth()->user() != null ) {
                         @auth()
                             <a class="dropdown-item" href="#">Mes Préférences</a>
                         @endauth
-                        <a class="dropdown-item" href="#">Card</a>
+                            <a class="dropdown-item" href="#">Card</a>
+                        @auth()
+                            <a class="dropdown-item" href="{{ route('mes-produits') }}">Mes Produits</a>
+                        @endauth
                     </div>
                 </li>
                 <li class="nav-item"><a href="#" class="nav-link">Dashboard</a></li>
-                <li class="nav-item"><a href="{{route('login')}}" class="nav-link">Se connecter</a></li>
+                @guest()
+                    <li class="nav-item"><a href="{{route('login')}}" class="nav-link">Se connecter</a></li>
+                @endguest
+                @auth
                 <li class="nav-item"><a href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();" class="nav-link">Se deconnecter</a>
@@ -91,6 +98,7 @@ if( Auth()->user() != null ) {
                         @csrf
                     </form>
                 </li>
+                @endauth
                 <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
                 <li class="nav-item cta cta-colored">
 
