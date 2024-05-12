@@ -86,6 +86,7 @@
 <div id="content">
 
     @yield('content')
+
 </div>
 <footer class="ftco-footer ftco-section">
     <div class="container">
