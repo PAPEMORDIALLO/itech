@@ -294,6 +294,9 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+            </li>
             <!-- /Message Notifications -->
 
             <li class="nav-item dropdown has-arrow main-drop">
@@ -345,15 +348,15 @@
                         <span>Employees</span>
                     </li>
                     <li >
-                        <a href="employees.html" class="la la-users"> <span> Utilisateurs</span> </a>
+                        <a href="{{route('users.index')}}" class="la la-users"> <span> Utilisateurs</span> </a>
                     </li>
 
 
                     <li>
-                        <a href="leads.html"><i class="la la-user-secret"></i> <span>Produits</span></a>
+                        <a href="{{route('produits.index')}}"><i class="la la-user-secret"></i> <span>Produits</span></a>
                     </li>
                     <li>
-                        <a href="tickets.html"><i class="la la-ticket"></i> <span>Categories</span></a>
+                        <a href="{{route('categories.index')}}"><i class="la la-ticket"></i> <span>Categories</span></a>
                     </li>
 
                 </ul>

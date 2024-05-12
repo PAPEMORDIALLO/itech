@@ -11,7 +11,7 @@ class StoreProduitRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,13 @@ class StoreProduitRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'image'=>'required|image|mimes:jpeg,png,jpg|max:2048',
+            'titre'=>'required|string|min:3|max:50',
+            'categorie_id'=>'required',
+            'prix'=>'required',
+            'date_fab'=>'required',
+            'date_exp'=>'required',
+            'user_id'=>'required',
         ];
     }
 }
