@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IndexClientController;
 use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProduitCommandeController;
 use App\Http\Controllers\ProduitController;
@@ -18,13 +19,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('layaout.test');
-//});
-Route::get('/', function () {
-    return view('index');
-});
-Route::get('/panier/ajoute/{produit}' ,[PanierController::class, 'ajoute'])->name('panier.ajoute')->middleware('auth');
+Route::get('/', [IndexClientController::class, 'index'])
+    ->name('index');
+
+
+Route::get('/panier/ajoute/{produit}' ,[PanierController::class, 'ajoute'])
+    ->name('panier.ajoute')->middleware('auth');
+
+
 
 Route::resources([
     'users' => UserController::class,
@@ -32,13 +34,15 @@ Route::resources([
     'produits'=>ProduitController::class,
     'produitcommandes'=>ProduitCommandeController::class,
     'preferences'=>\App\Http\Controllers\PreferenceController::class,
-    'paniers'=>PanierController::class,
+    'paniers'=>\App\Http\Controllers\PanierController::class,
     'notifications'=>\App\Http\Controllers\NotificationController::class,
     'commandes'=>\App\Http\Controllers\CommandeController::class,
     'categories'=>\App\Http\Controllers\CategorieController::class,
-
   ]);
 
+Route::name('client.')->group(function () {
+    Route::get('/index', [IndexClientController::class, 'index'])->name('index');
+});
 
 Auth::routes();
 

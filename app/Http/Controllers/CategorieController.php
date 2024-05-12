@@ -37,7 +37,7 @@ class CategorieController extends Controller
     {
         return view('admin.categories.form',
             [
-                'categorie' => new Categorie(),
+                'category' => new Categorie(),
             ]
         );
     }
@@ -64,7 +64,7 @@ class CategorieController extends Controller
     {
         return view('admin.categories.form',
             [
-                'categorie' => $categorie,
+                'category' => $categorie,
             ]
         );
     }
