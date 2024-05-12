@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Produit;
 use App\Http\Requests\StoreProduitRequest;
 use App\Http\Requests\UpdateProduitRequest;
+use App\Models\Stock;
 use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -20,7 +21,8 @@ class ProduitController extends Controller
     {
         $produits = Produit::with('categorie')
             ->paginate(15);
-        return view('admin.produits.index', compact('produits'));
+        $categories = \App\Models\Categorie::all();
+        return view('products.index', compact('produits', 'categories'));
     }
 
     /**
@@ -41,13 +43,34 @@ class ProduitController extends Controller
      */
     public function store(StoreProduitRequest $request): RedirectResponse
     {
-        try {
-            Produit::create((new Produit())->saveImage($request));
-            return redirect()->route('admin.produits.index')
-                ->with('success', 'Produit crée avec succès');
-        } catch (Exception $e) {
-            return redirect()->back()->with('error', $e->getMessage());
+//        try {
+//            Produit::create((new Produit())->saveImage($request));
+//            return redirect()->route('admin.produits.index')
+//                ->with('success', 'Produit crée avec succès');
+//        } catch (Exception $e) {
+//            return redirect()->back()->with('error', $e->getMessage());
+//        }
+        $input = $request->all();
+        if($request->hasFile('image')){
+            $photoname=time().'.'.$request->image->extension();
+            $photopath=$request->file('image')->storeAs('products',$photoname,'public');
+            $produit=Produit::create([
+                'image'=>$photopath,
+                'titre'=>$input['titre'],
+                'categorie_id'=>$input['categorie_id'],
+                'prix'=>$input['prix'],
+                'date_fab'=>$input['date_fab'],
+                'date_exp'=>$input['date_exp'],
+                'user_id'=>$input['user_id'],
+            ]);
+            Stock::create([
+                'produit_id'=>$produit->id,
+                'quantite'=>$input['quantite'],
+            ]);
+
+
         }
+        return redirect()->route('produits.index');
     }
 
     /**

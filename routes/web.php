@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProduitCommandeController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\StockController;
@@ -21,8 +22,9 @@ use Illuminate\Support\Facades\Route;
 //    return view('layaout.test');
 //});
 Route::get('/', function () {
-    return view('admin.categories.form');
+    return view('index');
 });
+Route::get('/panier/ajoute/{produit}' ,[PanierController::class, 'ajoute'])->name('panier.ajoute')->middleware('auth');
 
 Route::resources([
     'users' => UserController::class,
@@ -30,7 +32,7 @@ Route::resources([
     'produits'=>ProduitController::class,
     'produitcommandes'=>ProduitCommandeController::class,
     'preferences'=>\App\Http\Controllers\PreferenceController::class,
-    'paniers'=>\App\Http\Controllers\PanierController::class,
+    'paniers'=>PanierController::class,
     'notifications'=>\App\Http\Controllers\NotificationController::class,
     'commandes'=>\App\Http\Controllers\CommandeController::class,
     'categories'=>\App\Http\Controllers\CategorieController::class,
