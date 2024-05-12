@@ -61,6 +61,8 @@ class DashboardController extends Controller
             foreach ($produits as $produit) {
                 $user = User::find($produit->user_id);
                 $user->notify(new ExpirationSoonMessage($produit));
+                $newprix=$produit->prix-($produit->prix*0.2);
+                $produit->update(['nouveau_prix' => $newprix]);
             }
     }
 
