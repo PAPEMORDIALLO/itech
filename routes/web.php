@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IndexClientController::class, 'index'])
     ->name('index');
+Route::post('/panier/modifier/{panier}', [PanierController::class, 'modifier'])->name('panier.modifier');
 
 
 Route::get('/panier/ajoute/{produit}' ,[PanierController::class, 'ajoute'])
