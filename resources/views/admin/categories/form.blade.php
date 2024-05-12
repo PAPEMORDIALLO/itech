@@ -6,7 +6,7 @@
                 <h4 class="card-title mb-0">Ajouter un categorie</h4>
             </div>
             <div class="card-body">
-                <form action="{{route('categories.store')}}" method="post">
+                <form action="{{route('categories.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group row">
                         <label for="image" class="col-lg-3 col-form-label">Image</label>
