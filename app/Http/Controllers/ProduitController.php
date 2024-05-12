@@ -13,7 +13,10 @@ class ProduitController extends Controller
      */
     public function index()
     {
-        //
+
+        $produits = Produit::with('categories')
+            ->paginate(15);
+        return view('admin.produit.index', compact('produits'));
     }
 
     /**

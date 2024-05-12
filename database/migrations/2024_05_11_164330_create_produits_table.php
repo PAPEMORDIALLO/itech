@@ -20,9 +20,8 @@ return new class extends Migration
             $table->integer('prix');
             $table->integer('nouveau_prix')->nullable();
             $table->string('statut')->default('en vente');
-            $table->string('date_fab')->nullable();
-            $table->string('date_exp');
-
+            $table->date('date_fab')->nullable();
+            $table->date('date_exp');
             $table->timestamps();
         });
     }
