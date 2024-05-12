@@ -1,53 +1,37 @@
-@extends('layaout.template')
-@section('content')
-<br>
-<br>
-<br>
-<section class="ftco-section ftco-category ftco-no-pt">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8">
-						<div class="row">
-							<div class="col-md-6 order-md-last align-items-stretch d-flex">
-								<div class="category-wrap-2 ftco-animate img align-self-stretch d-flex" style="background-image: url(/images/category.jpg);">
-									<div class="text text-center">
-                                        <h2>LISTE DES CATÉGORIES</h2>
-										<p>Protégez la santé de chaque foyer</p>
-                                        <p><a href="#" class="btn btn-primary">Acheter maintenant</a></p>
+@extends('layaout.tamplateadmin')
+@section('container')
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">Categories</h3>
+            </div>
+            <div class="col-auto float-right ml-auto">
+                <a href="{{route('categories.create')}}" class="btn add-btn" ><i class="fa fa-plus"></i> Ajouter Cateorie</a>
+                <div class="view-icons">
+                    <a href="clients.html" class="grid-view btn btn-link active"><i class="fa fa-th"></i></a>
+                    <a href="clients-list.html" class="list-view btn btn-link"><i class="fa fa-bars"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row staff-grid-row">
+        @foreach($categories as $categorie)
+        <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
+            <div class="profile-widget">
+                <div class="profile-img">
+                    <a href="client-profile.html" class="avatar"><img alt="" src="{{asset('storage/'.$categorie->image)}}"></a>
+                </div>
+                <div class="dropdown profile-action">
+                    <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_client"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_client"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                    </div>
+                </div>
+                <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="client-profile.html">{{$categorie->libelle}}</a></h4>
 
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(/images/category-1.jpg);">
-									<div class="text px-3 py-1">
-										<h2 class="mb-0"><a href="#">Fruits</a></h2>
-									</div>
-								</div>
-								<div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(/images/category-2.jpg);">
-									<div class="text px-3 py-1">
-										<h2 class="mb-0"><a href="#">Vegetables</a></h2>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-4">
-						<div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(/images/category-3.jpg);">
-							<div class="text px-3 py-1">
-								<h2 class="mb-0"><a href="#">Juices</a></h2>
-							</div>
-						</div>
-						<div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(/images/category-4.jpg);">
-							<div class="text px-3 py-1">
-								<h2 class="mb-0"><a href="#">Dried</a></h2>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-<br>
-<br>
+            </div>
+        </div>
+    @endforeach
+    </div>
 @endsection

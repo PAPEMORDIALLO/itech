@@ -17,10 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Route::get('/', function () {
+//    return view('layaout.test');
+//});
 Route::get('/', function () {
-    return view('products.index');
+    return view('admin.categories.form');
 });
-
 
 Route::resources([
     'users' => UserController::class,
@@ -32,5 +34,10 @@ Route::resources([
     'notifications'=>\App\Http\Controllers\NotificationController::class,
     'commandes'=>\App\Http\Controllers\CommandeController::class,
     'categories'=>\App\Http\Controllers\CategorieController::class,
+
   ]);
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

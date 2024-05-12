@@ -11,7 +11,7 @@ class StoreCategorieRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class StoreCategorieRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'image'=>'required|image|mimes:jpeg,png,jpg|max:2048',
+            'libelle'=>'required|string|min:3|max:50',
         ];
     }
 }
