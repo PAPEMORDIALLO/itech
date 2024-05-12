@@ -4,10 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <meta name="description" content="Smarthr - Bootstrap Admin Template">
-    <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+    <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management,
+     minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
     <meta name="author" content="Dreamguys - Bootstrap Admin Template">
     <meta name="robots" content="noindex, nofollow">
-    <title>Dashboard - HRMS admin template</title>
+    <title>Dashboard - {{ config('app_name', "I-Tech")  }}</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/favicon.png')}}">
@@ -43,8 +44,8 @@
 
         <!-- Logo -->
         <div class="header-left">
-            <a href="index.html" class="logo">
-                <img src="assets/img/logo.png" width="40" height="40" alt="">
+            <a href="{{ route('index') }}" class="logo">
+                <img src="{{ asset("assets/img/logo.png")}}" width="40" height="40" alt="">
             </a>
         </div>
         <!-- /Logo -->
@@ -74,7 +75,7 @@
                     <a href="javascript:void(0);" class="responsive-search">
                         <i class="fa fa-search"></i>
                     </a>
-                    <form action="search.html">
+                    <form action="#">
                         <input class="form-control" type="text" placeholder="Search here">
                         <button class="btn" type="submit"><i class="fa fa-search"></i></button>
                     </form>
@@ -85,20 +86,20 @@
             <!-- Flag -->
             <li class="nav-item dropdown has-arrow flag-nav">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
-                    <img src="assets/img/flags/us.png" alt="" height="20"> <span>English</span>
+                    <img src="{{ asset("assets/img/flags/us.png")}}" alt="" height="20"> <span>English</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="assets/img/flags/us.png" alt="" height="16"> English
+                        <img src="{{asset("assets/img/flags/us.png")}}" alt="" height="16"> English
                     </a>
                     <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="assets/img/flags/fr.png" alt="" height="16"> French
+                        <img src="{{asset("assets/img/flags/fr.png")}}" alt="" height="16"> French
                     </a>
                     <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="assets/img/flags/es.png" alt="" height="16"> Spanish
+                        <img src="{{asset("assets/img/flags/es.png")}}" alt="" height="16"> Spanish
                     </a>
                     <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="assets/img/flags/de.png" alt="" height="16"> German
+                        <img src="{{asset("assets/img/flags/de.png")}}" alt="" height="16"> German
                     </a>
                 </div>
             </li>
@@ -117,66 +118,94 @@
                     <div class="noti-content">
                         <ul class="notification-list">
                             <li class="notification-message">
-                                <a href="activities.html">
+                                <a href="#">
                                     <div class="media">
 												<span class="avatar">
-													<img alt="" src="assets/img/profiles/avatar-02.jpg">
+													<img alt="" src="{{asset("assets/img/profiles/avatar-02.jpg")}}">
 												</span>
                                         <div class="media-body">
-                                            <p class="noti-details"><span class="noti-title">John Doe</span> added new task <span class="noti-title">Patient appointment booking</span></p>
+                                            <p class="noti-details">
+                                                <span class="noti-title">{{ Auth::user()->nom }}</span>
+                                                added new task <span class="noti-title">
+                                                    Patient appointment booking</span>
+                                            </p>
                                             <p class="noti-time"><span class="notification-time">4 mins ago</span></p>
                                         </div>
                                     </div>
                                 </a>
                             </li>
                             <li class="notification-message">
-                                <a href="activities.html">
+                                <a href="#">
                                     <div class="media">
 												<span class="avatar">
-													<img alt="" src="assets/img/profiles/avatar-03.jpg">
+													<img alt="" src="{{asset("assets/img/profiles/avatar-03.jpg")}}">
 												</span>
                                         <div class="media-body">
-                                            <p class="noti-details"><span class="noti-title">Tarah Shropshire</span> changed the task name <span class="noti-title">Appointment booking with payment gateway</span></p>
+                                            <p class="noti-details">
+                                                <span class="noti-title">Tarah Shropshire</span> changed the task name
+                                                <span class="noti-title">Appointment booking with payment gateway</span>
+                                            </p>
                                             <p class="noti-time"><span class="notification-time">6 mins ago</span></p>
                                         </div>
                                     </div>
                                 </a>
                             </li>
                             <li class="notification-message">
-                                <a href="activities.html">
+                                <a href="#">
                                     <div class="media">
 												<span class="avatar">
-													<img alt="" src="assets/img/profiles/avatar-06.jpg">
+													<img alt="" src="{{asset("assets/img/profiles/avatar-06.jpg")}}">
 												</span>
                                         <div class="media-body">
-                                            <p class="noti-details"><span class="noti-title">Misty Tison</span> added <span class="noti-title">Domenic Houston</span> and <span class="noti-title">Claire Mapes</span> to project <span class="noti-title">Doctor available module</span></p>
+                                            <p class="noti-details">
+                                                <span class="noti-title">Misty Tison</span>
+                                                added <span class="noti-title">Domenic Houston</span>
+                                                and <span class="noti-title">Claire Mapes</span>
+                                                to project
+                                                <span class="noti-title">
+                                                    Doctor available module
+                                                </span>
+                                            </p>
                                             <p class="noti-time"><span class="notification-time">8 mins ago</span></p>
                                         </div>
                                     </div>
                                 </a>
                             </li>
                             <li class="notification-message">
-                                <a href="activities.html">
+                                <a href="#">
                                     <div class="media">
 												<span class="avatar">
-													<img alt="" src="assets/img/profiles/avatar-17.jpg">
+													<img alt="" src="{{asset("assets/img/profiles/avatar-17.jpg")}}">
 												</span>
                                         <div class="media-body">
-                                            <p class="noti-details"><span class="noti-title">Rolland Webber</span> completed task <span class="noti-title">Patient and Doctor video conferencing</span></p>
+                                            <p class="noti-details">
+                                                <span class="noti-title">Rolland Webber</span> completed task
+                                                <span class="noti-title">Patient and Doctor video conferencing</span>
+                                            </p>
                                             <p class="noti-time"><span class="notification-time">12 mins ago</span></p>
                                         </div>
                                     </div>
                                 </a>
                             </li>
                             <li class="notification-message">
-                                <a href="activities.html">
+                                <a href="#">
                                     <div class="media">
 												<span class="avatar">
-													<img alt="" src="assets/img/profiles/avatar-13.jpg">
+													<img alt="" src="{{asset('assets/img/profiles/avatar-13.jpg')}}">
 												</span>
                                         <div class="media-body">
-                                            <p class="noti-details"><span class="noti-title">Bernardo Galaviz</span> added new task <span class="noti-title">Private chat module</span></p>
-                                            <p class="noti-time"><span class="notification-time">2 days ago</span></p>
+                                            <p class="noti-details">
+                                                <span class="noti-title">
+                                                    Bernardo Galaviz
+                                                </span>
+                                                added new task
+                                                <span class="noti-title">
+                                                    Private chat module
+                                                </span>
+                                            </p>
+                                            <p class="noti-time">
+                                                <span class="notification-time">2 days ago</span>
+                                            </p>
                                         </div>
                                     </div>
                                 </a>
@@ -184,7 +213,7 @@
                         </ul>
                     </div>
                     <div class="topnav-dropdown-footer">
-                        <a href="activities.html">View all Notifications</a>
+                        <a href="#">View all Notifications</a>
                     </div>
                 </div>
             </li>
@@ -203,86 +232,95 @@
                     <div class="noti-content">
                         <ul class="notification-list">
                             <li class="notification-message">
-                                <a href="chat.html">
+                                <a href="#">
                                     <div class="list-item">
                                         <div class="list-left">
 													<span class="avatar">
-														<img alt="" src="assets/img/profiles/avatar-09.jpg">
+														<img alt="" src="{{asset("assets/img/profiles/avatar-09.jpg")}}">
 													</span>
                                         </div>
                                         <div class="list-body">
                                             <span class="message-author">Richard Miles </span>
                                             <span class="message-time">12:28 AM</span>
                                             <div class="clearfix"></div>
-                                            <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                                            <span class="message-content">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing
+                                            </span>
                                         </div>
                                     </div>
                                 </a>
                             </li>
                             <li class="notification-message">
-                                <a href="chat.html">
+                                <a href="#">
                                     <div class="list-item">
                                         <div class="list-left">
 													<span class="avatar">
-														<img alt="" src="assets/img/profiles/avatar-02.jpg">
+														<img alt="" src="{{asset("assets/img/profiles/avatar-02.jpg")}}">
 													</span>
                                         </div>
                                         <div class="list-body">
                                             <span class="message-author">John Doe</span>
                                             <span class="message-time">6 Mar</span>
                                             <div class="clearfix"></div>
-                                            <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                                            <span class="message-content">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing</span>
                                         </div>
                                     </div>
                                 </a>
                             </li>
                             <li class="notification-message">
-                                <a href="chat.html">
+                                <a href="#">
                                     <div class="list-item">
                                         <div class="list-left">
 													<span class="avatar">
-														<img alt="" src="assets/img/profiles/avatar-03.jpg">
+														<img alt="" src="{{asset("assets/img/profiles/avatar-03.jpg")}}">
 													</span>
                                         </div>
                                         <div class="list-body">
                                             <span class="message-author"> Tarah Shropshire </span>
                                             <span class="message-time">5 Mar</span>
                                             <div class="clearfix"></div>
-                                            <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                                            <span class="message-content">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing
+                                            </span>
                                         </div>
                                     </div>
                                 </a>
                             </li>
                             <li class="notification-message">
-                                <a href="chat.html">
+                                <a href="#">
                                     <div class="list-item">
                                         <div class="list-left">
 													<span class="avatar">
-														<img alt="" src="assets/img/profiles/avatar-05.jpg">
+														<img alt="" src="{{asset("assets/img/profiles/avatar-05.jpg")}}">
 													</span>
                                         </div>
                                         <div class="list-body">
                                             <span class="message-author">Mike Litorus</span>
                                             <span class="message-time">3 Mar</span>
                                             <div class="clearfix"></div>
-                                            <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                                            <span class="message-content">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing
+                                            </span>
                                         </div>
                                     </div>
                                 </a>
                             </li>
                             <li class="notification-message">
-                                <a href="chat.html">
+                                <a href='#'>
                                     <div class="list-item">
                                         <div class="list-left">
 													<span class="avatar">
-														<img alt="" src="assets/img/profiles/avatar-08.jpg">
+														<img alt="" src="{{asset("assets/img/profiles/avatar-08.jpg")}}">
 													</span>
                                         </div>
                                         <div class="list-body">
                                             <span class="message-author"> Catherine Manseau </span>
                                             <span class="message-time">27 Feb</span>
                                             <div class="clearfix"></div>
-                                            <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                                            <span class="message-content">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing
+                                            </span>
                                         </div>
                                     </div>
                                 </a>
@@ -301,14 +339,14 @@
 
             <li class="nav-item dropdown has-arrow main-drop">
                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-							<span class="user-img"><img src="assets/img/profiles/avatar-21.jpg" alt="">
+							<span class="user-img"><img src="{{("assets/img/profiles/avatar-21.jpg")}}" alt="">
 							<span class="status online"></span></span>
-                    <span>Soeng Souy</span>
+                    <span>{{ Auth::user()->nom }} {{ Auth::user()->prenom }}</span>
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="profile.html">My Profile</a>
-                    <a class="dropdown-item" href="settings.html">Settings</a>
-                    <a class="dropdown-item" href="login.html">Logout</a>
+                    <a class="dropdown-item" href="#">My Profile</a>
+                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item" href="#">Logout</a>
                 </div>
             </li>
         </ul>
@@ -316,11 +354,14 @@
 
         <!-- Mobile Menu -->
         <div class="dropdown mobile-user-menu">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+            <a href="#" class="nav-link dropdown-toggle"
+               data-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-ellipsis-v"></i>
+            </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="profile.html">My Profile</a>
-                <a class="dropdown-item" href="settings.html">Settings</a>
-                <a class="dropdown-item" href="login.html">Logout</a>
+                <a class="dropdown-item" href="#">My Profile</a>
+                <a class="dropdown-item" href="#">Settings</a>
+                <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
             </div>
         </div>
         <!-- /Mobile Menu -->
@@ -337,10 +378,12 @@
                         <span>Main</span>
                     </li>
                     <li class="submenu">
-                        <a href="#"><i class="la la-dashboard"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
+                        <a href="#"><i class="la la-dashboard">
+
+                            </i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
-                            <li><a class="active" href="index.html">Admin Dashboard</a></li>
-                            <li><a href="employee-dashboard.html">Employee Dashboard</a></li>
+                            <li><a class="active" href="{{ route('dashboard') }}">Admin Dashboard</a></li>
+                            <li><a href="{{ route('dashboard') }}">Employee Dashboard</a></li>
                         </ul>
                     </li>
 
@@ -353,7 +396,8 @@
 
 
                     <li>
-                        <a href="{{route('produits.index')}}"><i class="la la-user-secret"></i> <span>Produits</span></a>
+                        <a href="{{route('produits.index')}}">
+                            <i class="la la-user-secret"></i> <span>Produits</span></a>
                     </li>
                     <li>
                         <a href="{{route('categories.index')}}"><i class="la la-ticket"></i> <span>Categories</span></a>
@@ -385,6 +429,7 @@
 <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
 
 <!-- Bootstrap Core JS -->
+<script src="{{ asset('js/popper.min.js') }}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 
 <!-- Slimscroll JS -->
@@ -396,7 +441,7 @@
 <script src="{{asset('assets/js/chart.js')}}"></script>
 
 <!-- Custom JS -->
-<script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('assets/js/app.js')}}"></script>
 
 </body>
 </html>
