@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IndexClientController;
 use App\Http\Controllers\ProduitCommandeController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\StockController;
@@ -17,12 +18,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('layaout.test');
-//});
-Route::get('/', function () {
-    return view('admin.categories.form');
+Route::get('/', [IndexClientController::class, 'index'])
+    ->name('index');
+
+
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    //
 });
+
 
 Route::resources([
     'users' => UserController::class,
@@ -34,9 +37,11 @@ Route::resources([
     'notifications'=>\App\Http\Controllers\NotificationController::class,
     'commandes'=>\App\Http\Controllers\CommandeController::class,
     'categories'=>\App\Http\Controllers\CategorieController::class,
-
   ]);
 
+Route::name('client.')->group(function () {
+    Route::get('/index', [IndexClientController::class, 'index'])->name('index');
+});
 
 Auth::routes();
 
