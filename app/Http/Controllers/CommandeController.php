@@ -47,15 +47,20 @@ class CommandeController extends Controller
 // Concaténation des parties pour former le matricule de commande
         $matricule_commande = $prefixe . "-" . $annee . $mois . "-" . $num_commande;
 
-        Commande::create([
+       $commande= Commande::create([
             'num_commande'=>$matricule_commande,
             'user_id'=>$user,
             'montant'=>$input['montant']
         ]);
+        $acheteur=$commande->user();
         $paniers=Panier::with('produit')->where('user_id',auth()->user()->id)->get();
         foreach ($paniers as $panier) {
+            $user=$panier->produit->user();
+            $user->notify(new \App\Notifications\SendClientnotification($panier->produit,$acheteur));
             $panier->delete();
+
         }
+
         return redirect()->route('index');
 
     }

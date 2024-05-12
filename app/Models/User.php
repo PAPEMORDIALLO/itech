@@ -31,7 +31,6 @@ class User extends Authenticatable
         'adresse',
         'telephone',
         'cni',
-        'status',
         'pays'
     ];
 

@@ -24,23 +24,6 @@
                                         <input id="nom" name="nom" type="text" class="form-control">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label">statut</label>
-                                    <div class="col-lg-9">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="statut" id="active" value="active" checked>
-                                            <label class="form-check-label" for="active">
-                                                activer
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="statut" id="gender_female" value="desactive">
-                                            <label class="form-check-label" for="gender_female">
-                                                Desactiver
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="form-group row">
@@ -61,6 +44,20 @@
                                     <div class="col-lg-9">
                                         <input id="confirmpassword" name="confirmpassword" type="password" class="form-control">
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="roles" class="col-form-label">Role</label>
+                                <div class="col-lg-9">
+                                    <select id="roles" class="select" name="roles[]">
+                                        <option> Select </option>
+                                        @foreach($roles as $role)
+                                            <option value="{{ $role->name }}" {{ in_array($role, old('roles') ?? []) ? 'selected' : '' }}>
+                                                {{$role->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>

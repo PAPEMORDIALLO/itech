@@ -82,8 +82,15 @@ if( Auth()->user() != null ) {
                         <a class="dropdown-item" href="#">Card</a>
                     </div>
                 </li>
-                <li class="nav-item"><a href="#" class="nav-link">Apropos</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Dashboard</a></li>
+                <li class="nav-item"><a href="{{route('login')}}" class="nav-link">Se connecter</a></li>
+                <li class="nav-item"><a href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();" class="nav-link">Se deconnecter</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </li>
                 <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
                 <li class="nav-item cta cta-colored">
 

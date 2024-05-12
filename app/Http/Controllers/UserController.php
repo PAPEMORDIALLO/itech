@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -19,15 +23,31 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create',['roles'=>Role::all()]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        //
+        $input = $request->all();
+
+
+        $input['password'] = Hash::make($request->password);
+        $user=User::create([
+            'nom' => $input['nom'],
+            'prenom' => $input['prenom'],
+            'email' => $input['email'],
+            'password' => $input['password'],
+            'adresse' => $input['adresse'],
+            'telephone' => $input['telephone'],
+            'cni' => $input['cni'],
+            'pays' => $input['pays'],
+
+        ]);
+        $user->assignRole($request->roles);
+        return redirect()->route('users.index');
     }
 
     /**
