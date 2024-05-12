@@ -4,10 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <meta name="description" content="Smarthr - Bootstrap Admin Template">
-    <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+    <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management,
+     minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
     <meta name="author" content="Dreamguys - Bootstrap Admin Template">
     <meta name="robots" content="noindex, nofollow">
-    <title>Dashboard - {{ config('app_name', "Anti-Gaspillage")  }}</title>
+    <title>Dashboard - {{ config('app_name', "I-Tech")  }}</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/favicon.png')}}">
@@ -43,8 +44,8 @@
 
         <!-- Logo -->
         <div class="header-left">
-            <a href="index.html" class="logo">
-                <img src="assets/img/logo.png" width="40" height="40" alt="">
+            <a href="{{ route('index') }}" class="logo">
+                <img src="{{ asset("assets/img/logo.png")}}" width="40" height="40" alt="">
             </a>
         </div>
         <!-- /Logo -->
@@ -428,6 +429,7 @@
 <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
 
 <!-- Bootstrap Core JS -->
+<script src="{{ asset('js/popper.min.js') }}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 
 <!-- Slimscroll JS -->
@@ -439,7 +441,7 @@
 <script src="{{asset('assets/js/chart.js')}}"></script>
 
 <!-- Custom JS -->
-<script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('assets/js/app.js')}}"></script>
 
 </body>
 </html>

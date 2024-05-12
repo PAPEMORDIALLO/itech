@@ -44,8 +44,8 @@
                             <span class="flaticon-shipped"></span>
                         </div>
                         <div class="media-body">
-                            <h3 class="heading">Free Shipping</h3>
-                            <span>On order over $100</span>
+                            <h3 class="heading">Livraison Gratuite près de chez vous</h3>
+                            <span>0 fcfa sur toutes vos livraisons</span>
                         </div>
                     </div>
                 </div>
@@ -55,8 +55,8 @@
                             <span class="flaticon-diet"></span>
                         </div>
                         <div class="media-body">
-                            <h3 class="heading">Always Fresh</h3>
-                            <span>Product well package</span>
+                            <h3 class="heading">Tout le temps moin chère</h3>
+                            <span>Faites des Economies</span>
                         </div>
                     </div>
                 </div>
@@ -66,8 +66,8 @@
                             <span class="flaticon-award"></span>
                         </div>
                         <div class="media-body">
-                            <h3 class="heading">Superior Quality</h3>
-                            <span>Quality Products</span>
+                            <h3 class="heading">Obtenez des recettes personalises</h3>
+                            <span>Recettes</span>
                         </div>
                     </div>
                 </div>
@@ -96,8 +96,9 @@
                                  style="background-image: url({{ asset('images/category.jpg') }});">
                                 <div class="text text-center">
                                     <h2>Vegetables</h2>
-                                    <p>Protect the health of every home</p>
-                                    <p><a href="#" class="btn btn-primary">Shop now</a></p>
+                                    <p>Faire des achats en toute simplicité</p>
+                                    <p><a href="{{ route('produits.index') }}" class="btn btn-primary">
+                                            Acheter maintenant </a></p>
                                 </div>
                             </div>
                         </div>
