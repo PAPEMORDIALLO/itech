@@ -86,7 +86,9 @@ if( Auth()->user() != null ) {
                         @endauth
                     </div>
                 </li>
-                <li class="nav-item"><a href="#" class="nav-link">Dashboard</a></li>
+                @auth()
+                <li class="nav-item"><a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a></li>
+                @endauth
                 @guest()
                     <li class="nav-item"><a href="{{route('login')}}" class="nav-link">Se connecter</a></li>
                 @endguest
