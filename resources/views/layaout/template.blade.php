@@ -101,6 +101,7 @@ if( Auth()->user() != null ) {
                     </form>
                 </li>
                 @endauth
+                <li class="nav-item"><a href="{{route('home')}}" class="nav-link">Configurer</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
                 <li class="nav-item cta cta-colored">
 

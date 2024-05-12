@@ -17,7 +17,7 @@
                         @endif
 
                         @include('components.input', [
-                            'label' => 'Nom', 'name' => 'name', 'value' => $categorie->name
+                            'label' => 'Nom', 'name' => 'libelle', 'value' => $categorie->name
                         ])
 
                         @include('components.input', [

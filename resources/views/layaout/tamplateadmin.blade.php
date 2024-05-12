@@ -382,26 +382,32 @@
 
                             </i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
+                           @if(auth()->user()->id == 1)
                             <li><a class="active" href="{{ route('dashboard') }}">Admin Dashboard</a></li>
-                            <li><a href="{{ route('dashboard') }}">Employee Dashboard</a></li>
+                            @endif
                         </ul>
                     </li>
 
                     <li class="menu-title">
                         <span>Employees</span>
                     </li>
+                    @if(auth()->user()->id == 1)
                     <li >
+
                         <a href="{{route('users.index')}}" class="la la-users"> <span> Utilisateurs</span> </a>
                     </li>
+                    @endif
 
 
                     <li>
-                        <a href="{{route('produits.index')}}">
-                            <i class="la la-user-secret"></i> <span>Produits</span></a>
+                        <a href="{{route('produits.create')}}">
+                            <i class="la la-user-secret"></i> <span>Ajouter un Produit</span></a>
                     </li>
+                    @if(auth()->user()->id == 1)
                     <li>
                         <a href="{{route('categories.index')}}"><i class="la la-ticket"></i> <span>Categories</span></a>
                     </li>
+                    @endif
 
                 </ul>
             </div>

@@ -24,6 +24,6 @@ class HomeController extends Controller
     public function index()
     {
         $produits = \App\Models\Produit::all();
-        return view('admin.produits.index', compact('produits'));
+        return view('admin.index', compact('produits'));
     }
 }

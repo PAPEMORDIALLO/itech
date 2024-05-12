@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IndexClientController;
 use App\Http\Controllers\PanierController;
@@ -52,6 +53,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])
     ->name('dashboard')->middleware('auth');
+Route::get('/filtre/{id}', [CategorieController::class, 'filtre'])->name('filtre');
 
 Route::get('/recettes', function (){
    return view('recettes.index');

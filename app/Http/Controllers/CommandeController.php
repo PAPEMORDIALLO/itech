@@ -6,6 +6,7 @@ use App\Models\Commande;
 use App\Http\Requests\StoreCommandeRequest;
 use App\Http\Requests\UpdateCommandeRequest;
 use App\Models\Panier;
+use App\Models\Stock;
 use App\Models\User;
 
 class CommandeController extends Controller
@@ -56,6 +57,9 @@ class CommandeController extends Controller
 
         $paniers=Panier::with('produit')->where('user_id',auth()->user()->id)->get();
         foreach ($paniers as $panier) {
+            $stock=$panier->produit->getstock();
+            $newstock=$stock->quantite-$panier->quantite;
+            $stock->update(['quantite'=>$newstock]);
              $user=User::find($panier->produit->user_id);
             $user->notify(new \App\Notifications\SendClientnotification($panier->produit));
             $panier->delete();

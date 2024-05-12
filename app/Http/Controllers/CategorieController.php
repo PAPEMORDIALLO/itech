@@ -37,7 +37,7 @@ class CategorieController extends Controller
     {
         return view('admin.categories.form',
             [
-                'category' => new Categorie(),
+                'categorie' => new Categorie(),
             ]
         );
     }
@@ -98,5 +98,11 @@ class CategorieController extends Controller
             return redirect()->route('admin.categories.index')
                 ->with('error', 'Catégorie ne peut pas être supprimée');
         }
+    }
+    public function filtre(String $id)
+    {
+        $categories = \App\Models\Categorie::all();
+        $produits = \App\Models\Produit::where('categorie_id', $id)->get();
+        return view('products.index', compact('produits', 'categories'));
     }
 }

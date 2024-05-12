@@ -23,6 +23,7 @@ class ProduitController extends Controller
         $produits = Produit::with('categorie')
             ->paginate(15);
         $categories = \App\Models\Categorie::all();
+        (new DashboardController())->soonExpirationAlert();
         return view('products.index', compact('produits', 'categories'));
     }
 
@@ -88,7 +89,8 @@ class ProduitController extends Controller
      */
     public function show(Produit $produit)
     {
-        return view('admin.produits.show', compact('produit'));
+     $produit->load('categorie');
+        return view('products.show', compact('produit'));
     }
 
     /**

@@ -36,5 +36,12 @@ public function user()
 {
     return $this->belongsTo(User::class);
 }
+public function stock(){
+    return $this->hasMany(Stock::class);
+}
+public function getstock(){
+    return $this->stock()->first();
+}
+
 
 }
