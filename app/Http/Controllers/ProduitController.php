@@ -6,6 +6,7 @@ use App\Models\Produit;
 use App\Http\Requests\StoreProduitRequest;
 use App\Http\Requests\UpdateProduitRequest;
 use App\Models\Stock;
+use Auth;
 use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -20,6 +21,15 @@ class ProduitController extends Controller
     public function index(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $produits = Produit::with('categorie')
+            ->paginate(15);
+        $categories = \App\Models\Categorie::all();
+        return view('products.index', compact('produits', 'categories'));
+    }
+
+    public function myProducts(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    {
+        $produits = Produit::with('user')
+            ->where('user_id', Auth::user()->id)
             ->paginate(15);
         $categories = \App\Models\Categorie::all();
         return view('products.index', compact('produits', 'categories'));

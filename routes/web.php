@@ -52,3 +52,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])
     ->name('dashboard')->middleware('auth');
+
+Route::get('/recettes', function (){
+   return view('recettes.index');
+});
+
+Route::get('/mes-produits', [ProduitController::class, 'myProducts'])
+    ->name('mes-produits')->middleware('auth');
