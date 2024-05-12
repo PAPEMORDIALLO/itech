@@ -382,14 +382,13 @@
 <!-- /Main Wrapper -->
 
 <!-- jQuery -->
-<script src="{{asset('js/jquery-3.6.0.min.js')}}"></script>
+<script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
 
 <!-- Bootstrap Core JS -->
-<script src="{{asset('js/bootstrap.bundle.min')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 
 <!-- Slimscroll JS -->
-<script src="{{asset('js/jquery.slimscroll.min')}}"></script>
+<script src="{{asset('assets/js/jquery.slimscroll.min.js')}}"></script>
 
 <!-- Chart JS -->
 <script src="{{asset('assets/plugins/morris/morris.min.js')}}"></script>
