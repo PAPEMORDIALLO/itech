@@ -30,7 +30,7 @@ class ProduitController extends Controller
      */
     public function create(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        return view('admin.produits.form',
+        return view('products.create',
             [
                 'produit' => new Produit(),
                 'categories' => \App\Models\Categorie::all()
