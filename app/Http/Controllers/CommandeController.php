@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Commande;
 use App\Http\Requests\StoreCommandeRequest;
 use App\Http\Requests\UpdateCommandeRequest;
+use App\Models\Panier;
 
 class CommandeController extends Controller
 {
@@ -29,7 +30,34 @@ class CommandeController extends Controller
      */
     public function store(StoreCommandeRequest $request)
     {
-        //
+        $input=$request->all();
+        $user=auth()->user()->id;
+        // Partie 1 : Préfixe fixe pour les commandes
+        $prefixe = "CMD";
+
+// Partie 2 : Année actuelle
+        $annee = date("Y");
+
+// Partie 3 : Mois actuel
+        $mois = date("m");
+
+// Partie 4 : Numéro de commande aléatoire
+        $num_commande = rand(1000, 9999);
+
+// Concaténation des parties pour former le matricule de commande
+        $matricule_commande = $prefixe . "-" . $annee . $mois . "-" . $num_commande;
+
+        Commande::create([
+            'num_commande'=>$matricule_commande,
+            'user_id'=>$user,
+            'montant'=>$input['montant']
+        ]);
+        $paniers=Panier::with('produit')->where('user_id',auth()->user()->id)->get();
+        foreach ($paniers as $panier) {
+            $panier->delete();
+        }
+        return redirect()->route('index');
+
     }
 
     /**

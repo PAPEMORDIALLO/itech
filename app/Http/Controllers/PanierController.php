@@ -6,6 +6,7 @@ use App\Models\Panier;
 use App\Http\Requests\StorePanierRequest;
 use App\Http\Requests\UpdatePanierRequest;
 use App\Models\Produit;
+use Illuminate\Http\Request;
 
 class PanierController extends Controller
 {
@@ -14,7 +15,8 @@ class PanierController extends Controller
      */
     public function index()
     {
-        //
+        $paniers=Panier::with('produit')->where('user_id',auth()->user()->id)->get();
+        return view('paniers.index',compact('paniers'));
     }
 
     /**
@@ -63,7 +65,8 @@ class PanierController extends Controller
      */
     public function destroy(Panier $panier)
     {
-        //
+        $panier->delete();
+        return redirect()->route('paniers.index');
     }
     public function ajoute(Produit $produit)
     {
@@ -73,5 +76,13 @@ class PanierController extends Controller
             'quantite' => 1
         ]);
         return redirect()->route('produits.index');
+    }
+    public function modifier(Request $request, Panier $panier)
+    {
+        $quant=$request->get('quantite');
+        $panier->update([
+            'quantite' => $quant
+        ]);
+        return redirect()->route('paniers.index');
     }
 }
