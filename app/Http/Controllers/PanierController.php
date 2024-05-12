@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Panier;
 use App\Http\Requests\StorePanierRequest;
 use App\Http\Requests\UpdatePanierRequest;
+use App\Models\Produit;
 
 class PanierController extends Controller
 {
@@ -38,6 +39,7 @@ class PanierController extends Controller
     public function show(Panier $panier)
     {
         //
+
     }
 
     /**
@@ -62,5 +64,14 @@ class PanierController extends Controller
     public function destroy(Panier $panier)
     {
         //
+    }
+    public function ajoute(Produit $produit)
+    {
+        Panier::create([
+            'produit_id' => $produit->id,
+            'user_id' => auth()->user()->id,
+            'quantite' => 1
+        ]);
+        return redirect()->route('produits.index');
     }
 }

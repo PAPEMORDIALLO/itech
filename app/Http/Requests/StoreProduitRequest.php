@@ -29,6 +29,7 @@ class StoreProduitRequest extends FormRequest
             'date_fab'=>'required',
             'date_exp'=>'required',
             'user_id'=>'required',
+            'quantite'=>'required',
         ];
     }
 }

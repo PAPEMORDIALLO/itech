@@ -7,8 +7,9 @@
             <h3>Ajouter un produit</h3>
         </div>
         <div class="card-body">
-            <form action="" method="POST">
+            <form action="{{route('produits.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
+                <input name="user_id" type="hidden" value="{{auth()->user()->id}}">
                 <div class="form-group">
                     <label for="titre">Titre:</label>
                     <input type="text" class="form-control" id="titre" name="titre" required>
@@ -20,7 +21,9 @@
                 <div class="form-group">
                     <label for="categorie_id">Catégorie:</label>
                     <select class="form-control" id="categorie_id" name="categorie_id" required>
-                        <option></option>
+                        @foreach ($categories as $category)
+                        <option value="{{$category->id}}"> {{$category->libelle}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">
@@ -28,8 +31,8 @@
                     <input type="number" class="form-control" id="prix" name="prix" required>
                 </div>
                 <div class="form-group">
-                    <label for="nouveau_prix">Nouveau Prix:</label>
-                    <input type="number" class="form-control" id="nouveau_prix" name="nouveau_prix">
+                    <label for="quantite">Quantite:</label>
+                    <input type="number" class="form-control" id="quantite" name="quantite">
                 </div>
                 <div class="form-group">
                     <label for="date_fab">Date de fabrication:</label>
