@@ -37,7 +37,7 @@ class CategorieController extends Controller
     {
         return view('admin.categories.form',
             [
-                'categorie' => new Categorie(),
+                'category' => new Categorie(),
             ]
         );
     }
@@ -50,12 +50,12 @@ class CategorieController extends Controller
         try {
 
             Categorie::create($request->validated());
-            return redirect()->route('categories.index')
+            return redirect()->route('admin.categories.index')
                 ->with('success', 'Catégorie crée avec succès');
 
         }catch (Exception $exception){
 
-            return redirect()->route('categories.index')
+            return redirect()->route('admin.categories.index')
                 ->with('error', 'Catégorie ne peut pas être crée');
         }
     }

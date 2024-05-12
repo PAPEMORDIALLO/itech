@@ -32,6 +32,5 @@ Route::resources([
     'notifications'=>\App\Http\Controllers\NotificationController::class,
     'commandes'=>\App\Http\Controllers\CommandeController::class,
     'categories'=>\App\Http\Controllers\CategorieController::class,
-
   ]);
 
