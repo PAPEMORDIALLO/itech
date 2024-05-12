@@ -10,27 +10,27 @@
     <title>Dashboard - HRMS admin template</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/favicon.png')}}">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
 
     <!-- Fontawesome CSS -->
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}">
 
     <!-- Lineawesome CSS -->
-    <link rel="stylesheet" href="assets/css/line-awesome.min.css">
+    <link rel="stylesheet" href="{{asset('assets/css/line-awesome.min.css')}}">
 
     <!-- Chart CSS -->
-    <link rel="stylesheet" href="assets/plugins/morris/morris.css">
+    <link rel="stylesheet" href="{{asset('assets/plugins/morris/morris.css')}}">
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-    <script src="assets/js/html5shiv.min.js"></script>
-    <script src="assets/js/respond.min.js"></script>
+    <script src="{{asset('assets/js/html5shiv.min.js')}}"></script>
+    <script src="{{asset('assets/js/respond.min.js')}}"></script>
     <![endif]-->
 </head>
 
@@ -379,22 +379,22 @@
 <!-- /Main Wrapper -->
 
 <!-- jQuery -->
-<script src="assets/js/jquery-3.5.1.min.js"></script>
+<script src="{{asset('js/jquery-3.6.0.min.js')}}"></script>
 
 <!-- Bootstrap Core JS -->
-<script src="assets/js/popper.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="{{asset('js/bootstrap.bundle.min')}}"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
 
 <!-- Slimscroll JS -->
-<script src="assets/js/jquery.slimscroll.min.js"></script>
+<script src="{{asset('js/jquery.slimscroll.min')}}"></script>
 
 <!-- Chart JS -->
-<script src="assets/plugins/morris/morris.min.js"></script>
-<script src="assets/plugins/raphael/raphael.min.js"></script>
-<script src="assets/js/chart.js"></script>
+<script src="{{asset('assets/plugins/morris/morris.min.js')}}"></script>
+<script src="{{asset('assets/plugins/raphael/raphael.min.js')}}"></script>
+<script src="{{asset('assets/js/chart.js')}}"></script>
 
 <!-- Custom JS -->
-<script src="assets/js/app.js"></script>
+<script src="{{asset('js/app.js')}}"></script>
 
 </body>
 </html>

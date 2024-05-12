@@ -17,10 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Route::get('/', function () {
+//    return view('layaout.test');
+//});
 Route::get('/', function () {
-    return view('layaout.test');
+    return view('admin.categories.form');
 });
-
 
 Route::resources([
     'users' => UserController::class,
