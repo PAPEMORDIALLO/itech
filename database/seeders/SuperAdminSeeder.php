@@ -26,7 +26,7 @@ class SuperAdminSeeder extends Seeder
             'email' => 'pmd@gmail.com',
             'password' => Hash::make('passer')
         ]);
-        $superAdmin->assignRole('Super Admin');
+        //$superAdmin->assignRole('Super Admin');
 
         // Creating Admin User
         $client = User::create([
@@ -39,6 +39,6 @@ class SuperAdminSeeder extends Seeder
             'email' => 'diarra@gmail.com',
             'password' => Hash::make('passer')
         ]);
-        $client->assignRole('client');
+       // $client->assignRole('client');
     }
 }

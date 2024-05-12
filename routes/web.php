@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IndexClientController;
 use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProduitCommandeController;
@@ -38,7 +39,7 @@ Route::resources([
     'notifications'=>\App\Http\Controllers\NotificationController::class,
     'commandes'=>\App\Http\Controllers\CommandeController::class,
     'categories'=>\App\Http\Controllers\CategorieController::class,
-  ]);
+]);
 
 Route::name('client.')->group(function () {
     Route::get('/index', [IndexClientController::class, 'index'])->name('index');
@@ -47,3 +48,6 @@ Route::name('client.')->group(function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/admin/dashboard', [DashboardController::class, 'index'])
+    ->name('dashboard')->middleware('auth');
